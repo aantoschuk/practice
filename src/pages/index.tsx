@@ -1,9 +1,7 @@
-import Grid from "./grid/grid";
-
 export default function Home() {
   return (
     <main>
-      <Grid />
+      <h1>Hello</h1>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { data } from "./data";
+import { data } from "@/data/grid";
 
 export const useGridState = () => {
   const [list, setList] = useState(data);

@@ -1,6 +1,6 @@
 import key from "weak-key";
 
-import { Settings } from "./components/settings";
+import { Settings } from "@/components";
 
 import { useGridState } from "./useGridState";
 
