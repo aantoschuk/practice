@@ -1,7 +1,32 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
+
+type TUser = {
+  name: string;
+};
 
 const UsersPage = () => {
-  const [users, setUsers] = useState<{ name: string }[]>([]);
+  const [users, setUsers] = useState<TUser[]>([]);
+  const [user, setUser] = useState<TUser>({ name: "" });
+
+  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUser({ name: event.target.value });
+  };
+
+  const createUser = async () => {
+    try {
+      // POST request
+      await fetch("/api/user", {
+        method: "POST",
+        body: JSON.stringify({ user }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      setUsers((prevState) => [...prevState, user]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const loadUsers = async () => {
     // request from next.js api routes
@@ -14,7 +39,19 @@ const UsersPage = () => {
     <>
       <h1>Users</h1>
       <button onClick={loadUsers}>Load users</button>
-      {users && users.map((user) => <p key={user.name}>{user.name}</p>)}
+      {users.length > 0 && (
+        <div>
+          <input
+            placeholder="User name"
+            onChange={onChange}
+            value={user?.name}
+          />
+          <button onClick={createUser}>Add user</button>
+          {users.map((user) => (
+            <p key={user.name}>{user.name}</p>
+          ))}
+        </div>
+      )}
     </>
   );
 };
