@@ -20,5 +20,8 @@
     "sass": "^1.59.3",
     "typescript": "5.0.2",
     "weak-key": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.32.2"
   }
 }
