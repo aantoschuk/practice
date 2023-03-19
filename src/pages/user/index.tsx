@@ -35,6 +35,10 @@ const UsersPage = () => {
     setUsers(data);
   };
 
+  const deleteUser = async () => {
+    const response = await fetch(`/api/user/${1}`, { method: "DELETE" });
+  };
+
   return (
     <>
       <h1>Users</h1>
@@ -47,6 +51,7 @@ const UsersPage = () => {
             value={user?.name}
           />
           <button onClick={createUser}>Add user</button>
+          <button onClick={deleteUser}>delete</button>
           {users.map((user) => (
             <p key={user.name}>{user.name}</p>
           ))}

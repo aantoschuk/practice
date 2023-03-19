@@ -2,6 +2,7 @@ import { USERS } from "@/data/users";
 import { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
+  id: number;
   name: string
 }
 
@@ -14,6 +15,7 @@ const handler = (request: NextApiRequest, respone: NextApiResponse<Data[] | Data
     const user = request.body.user;
     respone.status(200).json(user);
   }
+
 }
 
 
