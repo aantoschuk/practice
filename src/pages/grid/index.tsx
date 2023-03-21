@@ -2,7 +2,7 @@ import key from "weak-key";
 
 import { Settings } from "@/components";
 
-import { useGridState } from "./useGridState";
+import { useGridState } from "@/services/grid/useGridState";
 
 import styles from "./grid.module.scss";
 
