@@ -6,13 +6,14 @@ COPY package.json .
 
 RUN corepack enable
 
-RUN yarn
+RUN corepack prepare pnpm@latest --activate
 
 COPY . .
 
+RUN pnpm install
+
 EXPOSE 3000
+RUN [ "pnpm", "build" ]
 
-RUN [ "yarn", "build" ]
-
-CMD [ "yarn", "start" ]
+CMD [ "pnpm", "start" ]
 
